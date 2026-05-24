@@ -1,0 +1,172 @@
+export default function GenZFlashcardTemplate() {
+  const flashcards = [
+    {
+      question: "Leadership là gì?",
+      answer:
+        "Khả năng dẫn dắt, tạo ảnh hưởng và giúp đội nhóm đi đúng hướng mà không cần phải lúc nào cũng 'quát KPI'.",
+      category: "Leadership",
+    },
+    {
+      question: "Marketing Insight là gì?",
+      answer:
+        "Một sự thật ngầm hiểu về hành vi hoặc cảm xúc khách hàng mà khi khai thác đúng sẽ tạo ra kết nối mạnh mẽ.",
+      category: "Marketing",
+    },
+    {
+      question: "CTA tốt cần điều gì?",
+      answer:
+        "Ngắn – rõ – tạo hành động ngay. Đừng viết CTA như đang xin phép crush rep tin nhắn 😭",
+      category: "Copywriting",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 text-white overflow-hidden relative">
+      {/* Background Blur */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-[30rem] h-[30rem] bg-cyan-500/20 rounded-full blur-3xl" />
+
+      {/* Header */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-10">
+        <div className="flex flex-col lg:flex-row justify-between gap-6 items-start lg:items-center">
+          <div>
+            <h1 className="text-5xl font-black tracking-tight leading-tight">
+              FLASHCARD <span className="text-pink-400">GEN Z</span>
+            </h1>
+            <p className="mt-3 text-slate-300 text-lg max-w-2xl">
+              Học bài theo phong cách “deadline dí tới cổ nhưng vẫn aesthetic”.
+            </p>
+          </div>
+
+          <div className="flex gap-3 flex-wrap">
+            <button className="px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all">
+              ✨ Random Card
+            </button>
+            <button className="px-5 py-3 rounded-2xl bg-pink-500 hover:bg-pink-400 transition-all font-semibold shadow-lg shadow-pink-500/30">
+              🚀 Start Learning
+            </button>
+          </div>
+        </div>
+
+        {/* Search + Filter */}
+        <div className="mt-10 grid md:grid-cols-3 gap-4">
+          <input
+            type="text"
+            placeholder="Search flashcard..."
+            className="md:col-span-2 px-5 py-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md outline-none focus:ring-2 focus:ring-pink-400"
+          />
+
+          <select className="px-5 py-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md outline-none text-white">
+            <option className="text-black">All Categories</option>
+            <option className="text-black">Leadership</option>
+            <option className="text-black">Marketing</option>
+            <option className="text-black">Copywriting</option>
+          </select>
+        </div>
+
+        {/* Stats */}
+        <div className="grid md:grid-cols-3 gap-5 mt-8">
+          <div className="bg-white/10 border border-white/10 rounded-3xl p-6 backdrop-blur-md">
+            <p className="text-slate-300 text-sm">Total Flashcards</p>
+            <h2 className="text-4xl font-black mt-2">120</h2>
+          </div>
+
+          <div className="bg-white/10 border border-white/10 rounded-3xl p-6 backdrop-blur-md">
+            <p className="text-slate-300 text-sm">Completed Today</p>
+            <h2 className="text-4xl font-black mt-2">32</h2>
+          </div>
+
+          <div className="bg-white/10 border border-white/10 rounded-3xl p-6 backdrop-blur-md">
+            <p className="text-slate-300 text-sm">Focus Mode</p>
+            <h2 className="text-4xl font-black mt-2">ON 🔥</h2>
+          </div>
+        </div>
+
+        {/* Flashcards */}
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-12">
+          {flashcards.map((card, index) => (
+            <div
+              key={index}
+              className="group relative h-[350px] perspective"
+            >
+              <div className="relative w-full h-full duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+                {/* Front */}
+                <div className="absolute w-full h-full backface-hidden rounded-[2rem] bg-white/10 border border-white/10 backdrop-blur-xl p-7 flex flex-col justify-between shadow-2xl shadow-black/30">
+                  <div className="flex justify-between items-center">
+                    <span className="px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 text-sm">
+                      {card.category}
+                    </span>
+
+                    <span className="text-slate-400 text-sm">
+                      #{index + 1}
+                    </span>
+                  </div>
+
+                  <div>
+                    <p className="text-slate-400 text-sm mb-3">
+                      QUESTION
+                    </p>
+                    <h2 className="text-2xl font-bold leading-relaxed">
+                      {card.question}
+                    </h2>
+                  </div>
+
+                  <div className="flex justify-between items-center text-sm text-slate-400">
+                    <span>Hover to flip 👀</span>
+                    <span>✨</span>
+                  </div>
+                </div>
+
+                {/* Back */}
+                <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-[2rem] bg-gradient-to-br from-pink-500 to-purple-600 p-7 shadow-2xl shadow-pink-500/30 flex flex-col justify-between">
+                  <div className="flex justify-between items-center">
+                    <span className="px-3 py-1 rounded-full bg-white/20 text-white text-sm">
+                      ANSWER
+                    </span>
+
+                    <span>🧠</span>
+                  </div>
+
+                  <div>
+                    <p className="text-white/70 text-sm mb-3">EXPLANATION</p>
+                    <h2 className="text-xl font-semibold leading-relaxed text-white">
+                      {card.answer}
+                    </h2>
+                  </div>
+
+                  <div className="flex justify-between items-center text-sm text-white/70">
+                    <span>Knowledge unlocked 🔓</span>
+                    <span>⚡</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Custom CSS */}
+      <style>{`
+        .perspective {
+          perspective: 1000px;
+        }
+
+        .transform-style-preserve-3d {
+          transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+          backface-visibility: hidden;
+        }
+
+        .rotate-y-180 {
+          transform: rotateY(180deg);
+        }
+
+        .group:hover .group-hover\\:rotate-y-180 {
+          transform: rotateY(180deg);
+        }
+      `}</style>
+    </div>
+  );
+}
